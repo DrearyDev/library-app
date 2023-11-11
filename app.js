@@ -23,6 +23,10 @@ function addBookToLibrary(title, author, numOfPages, read, img) {
 addBookToLibrary('harrypotter', 'jkr', 999, false);
 addBookToLibrary('fakebook', 'nobody', 0, true);
 
-myLibrary.forEach(book => {
-    console.log(book);
-});
+function DisplayBooks(arr) {
+    for (let i = 0; i < arr.length; i++){
+        console.log(arr[i]);
+    };
+};
+
+DisplayBooks(myLibrary);
