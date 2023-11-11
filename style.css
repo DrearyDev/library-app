@@ -9,6 +9,10 @@ body {
     background-color: #333;
 }
 
+
+/* HEADER SECTION */
+
+
 header {
     padding: 20px;
     background-color: #eee;
@@ -32,4 +36,62 @@ header {
 }
 .btn img:active {
     filter: invert(10%);
+}
+
+/* MAIN SECTION */
+
+
+.books {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 300px);
+    gap: 10px;
+    justify-content: center;
+
+    padding: 20px;
+}
+.books .book {
+    width: 300px;
+    background-color: #eee;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+    justify-self: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 20px;
+    position: relative;
+}
+.books .book .information {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.books .book .information div {
+    display: flex;
+    justify-content: space-between;
+}
+.books .book h1 {
+    margin-top: 20px;
+    text-align: center;
+}
+.books .book .cover {
+    height: 300px;
+    width: auto;
+    margin: 20px;
+}
+.books .book .remove {
+    width: 20px;
+    height: auto;
+
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+.books .book .remove:hover {
+    filter: saturate(80%);
 }
