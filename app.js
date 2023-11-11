@@ -2,19 +2,20 @@
 
 const myLibrary = [];
 
-function Book(title, author, numOfPages, read) {
+function Book(title, author, numOfPages, read, img) {
     // the constructor...
 
     this.title = title;
     this.author = author;
     this.numOfPages = numOfPages;
     this.read = read;
+    this.img = img;
 };
 
-function addBookToLibrary(title, author, numOfPages, read) {
+function addBookToLibrary(title, author, numOfPages, read, img) {
     // do stuff..
 
-    myLibrary.push(new Book(title, author, numOfPages, read))
+    myLibrary.push(new Book(title, author, numOfPages, read, img))
 };
 
 
@@ -25,4 +26,3 @@ addBookToLibrary('fakebook', 'nobody', 0, true);
 myLibrary.forEach(book => {
     console.log(book);
 });
-
