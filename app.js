@@ -31,6 +31,13 @@ addBookToLibrary('catinhat', 'seuss', 389, true, './example-covers/half-blood-pr
 function DisplayBooks(arr) {
     for (let i = 0; i < arr.length; i++){
 
+        let status;
+        if (arr[i].read === true) {
+            status = 'finished';
+        } else {
+            status = 'not finished'
+        };
+
         let newBook = `
         <div class="book">
             <h1>${arr[i].title}</h1>
@@ -46,7 +53,7 @@ function DisplayBooks(arr) {
                 </div>
                 <div class="status">
                     <p>Status:</p>
-                    <p>${arr[i].read}</p>
+                    <p>${status}</p>
                 </div>
             </div>
             <img class="remove" src="./icons/exit.png">
