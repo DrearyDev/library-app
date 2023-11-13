@@ -1,6 +1,7 @@
 'use strict';
 
 const books = document.querySelector('.books');
+let remove = document.querySelectorAll('.remove');
 
 const myLibrary = [];
 
@@ -24,6 +25,8 @@ function addBookToLibrary(title, author, numOfPages, read, img) {
 // test examples
 addBookToLibrary('notharrypotter', 'jkr', 999, false, './example-covers/half-blood-prince.webp');
 addBookToLibrary('fakebook', 'nobody', 0, true, './example-covers/half-blood-prince.webp');
+addBookToLibrary('realfakebook', 'everyone', 39847, false, './example-covers/half-blood-prince.webp');
+addBookToLibrary('catinhat', 'seuss', 389, true, './example-covers/half-blood-prince.webp');
 
 function DisplayBooks(arr) {
     for (let i = 0; i < arr.length; i++){
@@ -49,9 +52,15 @@ function DisplayBooks(arr) {
             <img class="remove" src="./icons/exit.png">
         </div>`;
 
-
         books.innerHTML += newBook;
     };
+    remove = document.querySelectorAll('.remove');
 };
-
 DisplayBooks(myLibrary);
+
+remove.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        console.log(e.target.offsetParent);
+        e.target.offsetParent.style.display = 'none';
+    });
+});
