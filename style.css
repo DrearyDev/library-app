@@ -43,14 +43,12 @@ header {
 
 .books {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 300px);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 10px;
-    justify-content: center;
 
     padding: 20px;
 }
 .books .book {
-    width: 300px;
     background-color: #eee;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
