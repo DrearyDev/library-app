@@ -1,7 +1,11 @@
 'use strict';
 
+const body = document.querySelector('body');
 const books = document.querySelector('.books');
 let remove = document.querySelectorAll('.remove');
+const formContainer = document.querySelector('.form-pop-up');
+const form = document.querySelector('.form-pop-up form');
+const addBookBtn = document.querySelector('.btn');
 
 const myLibrary = [];
 
@@ -67,7 +71,16 @@ DisplayBooks(myLibrary);
 
 remove.forEach(btn => {
     btn.addEventListener('click', (e) => {
-        console.log(e.target.offsetParent);
-        e.target.offsetParent.style.display = 'none';
+        if (e.target.offsetParent === form) {
+            formContainer.style.display = 'none';
+            body.style.overflow = 'auto';
+        } else {
+            e.target.offsetParent.style.display = 'none';
+        };
     });
+});
+
+addBookBtn.addEventListener('click', () => {
+    formContainer.style.display = 'block';
+    body.style.overflow = 'hidden';
 });
