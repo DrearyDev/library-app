@@ -169,4 +169,10 @@ input[type="number"] {
     border: 1px solid black;
     border-radius: 5px;
 }
+.form-pop-up form button:hover {
+    filter: invert(10%);
+}
+.form-pop-up form button:active {
+    filter: invert(20%);
+}
 
