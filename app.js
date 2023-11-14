@@ -25,8 +25,10 @@ function addBookToLibrary(title, author, numOfPages, status, img) {
         status = 'finished';
     };
 
+    let index = myLibrary.length;
+
     let newBook = `
-    <div class="book">
+    <div class="book" data-attribute="${index}">
         <h1>${title}</h1>
         <img class="cover" src="${img}">
         <div class="information">
@@ -50,14 +52,20 @@ function addBookToLibrary(title, author, numOfPages, status, img) {
     myLibrary.push(new Book(title, author, numOfPages, status, img));
 
     remove = document.querySelectorAll('.remove');
+    refreshRemoveButtons();
+};
 
+function refreshRemoveButtons() {
     remove.forEach(btn => {
         btn.addEventListener('click', (e) => {
-            if (e.target.offsetParent === form) {
+            if (e.target.parentElement === form) {
                 formContainer.style.display = 'none';
                 body.style.overflow = 'auto';
             } else {
-                e.target.offsetParent.style.display = 'none';
+                let index = e.target.parentElement.dataset.attribute;
+                
+                delete myLibrary[index];
+                e.target.parentElement.remove();
             };
         });
     });
@@ -74,17 +82,14 @@ addBookBtn.addEventListener('click', () => {
     body.style.overflow = 'hidden';
 });
 
-console.log(remove);
-
 formSubmit.addEventListener('click', (e) => {
     e.preventDefault();
-    console.log(remove);
 
-    let title = e.target.offsetParent[0].value;
-    let author = e.target.offsetParent[1].value;
-    let numOfPages = e.target.offsetParent[2].value;
-    let status = e.target.offsetParent[3].value;
-    let img = URL.createObjectURL(e.target.offsetParent[4].files[0]);
+    let title = e.target.parentElement[0].value;
+    let author = e.target.parentElement[1].value;
+    let numOfPages = e.target.parentElement[2].value;
+    let status = e.target.parentElement[3].value;
+    let img = URL.createObjectURL(e.target.parentElement[4].files[0]);
 
     formContainer.style.display = 'none';
     body.style.overflow = 'auto';
