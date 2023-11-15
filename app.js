@@ -115,7 +115,11 @@ formSubmit.addEventListener('click', (e) => {
     let author = e.target.parentElement[1].value;
     let numOfPages = e.target.parentElement[2].value;
     let status = e.target.parentElement[3].value;
-    let img = URL.createObjectURL(e.target.parentElement[4].files[0]);
+    let img = e.target.parentElement[4].files[0];
+
+    if (!(img === undefined)) { //if img isnt empty
+        img = URL.createObjectURL(e.target.parentElement[4].files[0]);
+    };
 
     formContainer.style.display = 'none';
     body.style.overflow = 'auto';
