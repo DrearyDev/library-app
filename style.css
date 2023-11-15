@@ -66,6 +66,16 @@ header {
     padding: 20px;
     position: relative;
 }
+.books .book h1 {
+    margin-top: 20px;
+    text-align: center;
+    font-size: clamp(1.5rem, 1rem + 1vw, 1.5rem + 2vw);
+}
+.books .book .cover {
+    height: 300px;
+    width: auto;
+    margin: 20px;
+}
 .books .book .information {
     width: 100%;
 
@@ -77,15 +87,12 @@ header {
     display: flex;
     justify-content: space-between;
 }
-.books .book h1 {
-    margin-top: 20px;
-    text-align: center;
-    font-size: clamp(1.5rem, 1rem + 1vw, 1.5rem + 2vw);
-}
-.books .book .cover {
-    height: 300px;
-    width: auto;
-    margin: 20px;
+.books .book .information .status {
+    white-space: nowrap;
+
+    display: grid;
+    grid-template-columns: 1fr min-content min-content;
+    gap: 10px;
 }
 .books .book .remove {
     width: 20px;

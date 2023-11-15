@@ -7,6 +7,7 @@ const formContainer = document.querySelector('.form-pop-up');
 const form = document.querySelector('.form-pop-up form');
 const formSubmit = document.querySelector('.form-pop-up form button');
 const addBookBtn = document.querySelector('.btn');
+let statusCheck = document.querySelectorAll('.status input');
 
 const myLibrary = [];
 
@@ -19,14 +20,15 @@ function Book(title, author, numOfPages, status, img) {
 };
 
 function addBookToLibrary(title, author, numOfPages, status, img) {
+    let check = `unchecked="`;
     if (status === "off") {
-        status = 'not finished';
+        status = 'Not Finished';
     } else {
-        status = 'finished';
+        status = 'Finished';
+        check = `checked="true`;
     };
 
     let index = myLibrary.length;
-
     let newBook = `
     <div class="book" data-attribute="${index}">
         <h1>${title}</h1>
@@ -42,7 +44,8 @@ function addBookToLibrary(title, author, numOfPages, status, img) {
             </div>
             <div class="status">
                 <p>Status:</p>
-                <p>${status}</p>
+                <label>${status}</label>
+                <input type="checkbox" id="status" name="status" ${check}">
             </div>
         </div>
         <img class="remove" src="./icons/exit.png" alt="remove">
@@ -51,11 +54,13 @@ function addBookToLibrary(title, author, numOfPages, status, img) {
     books.innerHTML += newBook;
     myLibrary.push(new Book(title, author, numOfPages, status, img));
 
-    remove = document.querySelectorAll('.remove');
-    refreshRemoveButtons();
+    removeButtonEvent();
+    statusButtonEvent();
 };
 
-function refreshRemoveButtons() {
+function removeButtonEvent() {
+    remove = document.querySelectorAll('.remove');
+
     remove.forEach(btn => {
         btn.addEventListener('click', (e) => {
             if (e.target.parentElement === form) {
@@ -66,6 +71,27 @@ function refreshRemoveButtons() {
                 
                 delete myLibrary[index];
                 e.target.parentElement.remove();
+            };
+        });
+    });
+};
+
+function statusButtonEvent() {
+    statusCheck = document.querySelectorAll('.status input');
+
+    statusCheck.forEach(check => {
+
+        check.addEventListener('click', () => {
+            let index = check.offsetParent.dataset.attribute;
+
+            if (check.attributes[3].nodeValue === 'true'){
+                check.attributes[3].nodeValue = 'false';
+                check.previousElementSibling.innerText = 'Not Finished';
+                myLibrary[index].status = 'Not Finished';
+            } else {
+                check.attributes[3].nodeValue = 'true';
+                check.previousElementSibling.innerText = 'Finished';
+                myLibrary[index].status = 'Finished';
             };
         });
     });
