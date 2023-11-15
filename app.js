@@ -19,6 +19,16 @@ function Book(title, author, numOfPages, status, img) {
     this.img = img;
 };
 
+Book.prototype.statusChange = function(previousSibling) {
+    if (this.status === 'Not Finished'){
+        this.status = 'Finished';
+        previousSibling.innerText = 'Finished';
+    } else {
+        this.status = 'Not Finished';
+        previousSibling.innerText = 'Not Finished';
+    };
+};
+
 function addBookToLibrary(title, author, numOfPages, status, img) {
     let check = `unchecked="`;
     if (status === false) {
@@ -83,16 +93,9 @@ function statusButtonEvent() {
 
         check.addEventListener('click', () => {
             let index = check.offsetParent.dataset.attribute;
+            let previousSibling = check.previousElementSibling
 
-            if (check.attributes[3].nodeValue === 'true'){
-                check.attributes[3].nodeValue = 'false';
-                check.previousElementSibling.innerText = 'Not Finished';
-                myLibrary[index].status = 'Not Finished';
-            } else {
-                check.attributes[3].nodeValue = 'true';
-                check.previousElementSibling.innerText = 'Finished';
-                myLibrary[index].status = 'Finished';
-            };
+            myLibrary[index].statusChange(previousSibling);
         });
     });
 };
