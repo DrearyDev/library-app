@@ -98,10 +98,11 @@ function statusButtonEvent() {
 };
 
 // test examples
-addBookToLibrary('Harry Potter', 'jkr', 999, "off", './example-covers/half-blood-prince.webp');
-addBookToLibrary('Captain Underpants', 'nobody', 0, "on", './example-covers/captain-underpants.webp');
-addBookToLibrary('Geronimo Stilton', 'everyone', 39847, "off", './example-covers/geronimo-stilton.webp');
-addBookToLibrary('The Cat in the Hat', 'seuss', 389, "on", './example-covers/cat-in-hat.webp');
+addBookToLibrary('Super Great Book', 'drearydev', 999, 'on', './example-covers/super-great-book.webp');
+addBookToLibrary('Super Great Book', 'drearydev', 999, 'on', './example-covers/super-great-book.webp');
+addBookToLibrary('Super Great Book', 'drearydev', 999, 'on', './example-covers/super-great-book.webp');
+addBookToLibrary('Super Great Book', 'drearydev', 999, 'on', './example-covers/super-great-book.webp');
+
 
 addBookBtn.addEventListener('click', () => {
     formContainer.style.display = 'block';
