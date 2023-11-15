@@ -21,7 +21,7 @@ function Book(title, author, numOfPages, status, img) {
 
 function addBookToLibrary(title, author, numOfPages, status, img) {
     let check = `unchecked="`;
-    if (status === "off") {
+    if (status === false) {
         status = 'Not Finished';
     } else {
         status = 'Finished';
@@ -98,10 +98,10 @@ function statusButtonEvent() {
 };
 
 // test examples
-addBookToLibrary('Super Great Book', 'drearydev', 999, 'on', './example-covers/super-great-book.webp');
-addBookToLibrary('Super Great Book', 'drearydev', 999, 'on', './example-covers/super-great-book.webp');
-addBookToLibrary('Super Great Book', 'drearydev', 999, 'on', './example-covers/super-great-book.webp');
-addBookToLibrary('Super Great Book', 'drearydev', 999, 'on', './example-covers/super-great-book.webp');
+addBookToLibrary('Super Great Book', 'drearydev', 999, false, './example-covers/super-great-book.webp');
+addBookToLibrary('Super Great Book', 'drearydev', 999, true, './example-covers/super-great-book.webp');
+addBookToLibrary('Super Great Book', 'drearydev', 999, false, './example-covers/super-great-book.webp');
+addBookToLibrary('Super Great Book', 'drearydev', 999, true, './example-covers/super-great-book.webp');
 
 
 addBookBtn.addEventListener('click', () => {
@@ -115,7 +115,7 @@ formSubmit.addEventListener('click', (e) => {
     let title = e.target.parentElement[0].value;
     let author = e.target.parentElement[1].value;
     let numOfPages = e.target.parentElement[2].value;
-    let status = e.target.parentElement[3].value;
+    let status = e.target.parentElement[3].checked;
     let img = e.target.parentElement[4].files[0];
 
     if (!(img === undefined)) { //if img isnt empty
