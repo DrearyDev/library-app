@@ -11,21 +11,23 @@ let statusCheck = document.querySelectorAll('.status input');
 
 const myLibrary = [];
 
-function Book(title, author, numOfPages, status, img) {
-    this.title = title;
-    this.author = author;
-    this.numOfPages = numOfPages;
-    this.status = status;
-    this.img = img;
-};
+class Book {
+    constructor(title, author, numOfPages, status, img){
+        this.title = title;
+        this.author = author;
+        this.numOfPages = numOfPages;
+        this.status = status;
+        this.img = img;
+    };
 
-Book.prototype.statusChange = function(previousSibling) {
-    if (this.status === 'Not Finished'){
-        this.status = 'Finished';
-        previousSibling.innerText = 'Finished';
-    } else {
-        this.status = 'Not Finished';
-        previousSibling.innerText = 'Not Finished';
+    statusChange(previousSibling) {
+        if (this.status === 'Not Finished'){
+            this.status = 'Finished';
+            previousSibling.innerText = 'Finished';
+        } else {
+            this.status = 'Not Finished';
+            previousSibling.innerText = 'Not Finished';
+        };
     };
 };
 
