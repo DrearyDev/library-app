@@ -167,9 +167,12 @@ header {
     align-self: flex-end;
 }
 .form-pop-up form ul li input[type=text],
-input[type="number"] {
+.form-pop-up form ul li input[type="number"] {
     padding: 5px 10px;
     border: 1px solid black;
+}
+.form-pop-up form ul li input:invalid + span {
+    color: darkred;
 }
 .form-pop-up form button {
     padding: 5px 10px;

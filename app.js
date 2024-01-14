@@ -115,18 +115,42 @@ addBookBtn.addEventListener('click', () => {
 formSubmit.addEventListener('click', (e) => {
     e.preventDefault();
 
-    let title = e.target.parentElement[0].value;
-    let author = e.target.parentElement[1].value;
-    let numOfPages = e.target.parentElement[2].value;
-    let status = e.target.parentElement[3].checked;
-    let img = e.target.parentElement[4].files[0];
+    const titleInput = document.querySelector('input#title');
+    const authorInput = document.querySelector('input#author');
+    const numOfPagesInput = document.querySelector('input#num-of-pages');
+    const statusInput = document.querySelector('input#read');
+    const imgInput = document.querySelector('input#img');
 
-    if (!(img === undefined)) { //if img isnt empty
-        img = URL.createObjectURL(e.target.parentElement[4].files[0]);
+    function validate() {
+        let valid = true;
+        let inputs = [...document.querySelectorAll('form ul li > input')];
+
+        inputs.forEach(input => {
+            input.addEventListener('input', validate);
+
+            if (input.checkValidity()) {
+                input.nextElementSibling.innerText = '';
+                input.style.borderColor = 'green';
+            } else {
+                input.nextElementSibling.innerText = input.validationMessage;
+                valid = false;
+                input.style.borderColor = 'red';
+            };
+        });
+
+        return valid;
     };
 
-    formContainer.style.display = 'none';
-    body.style.overflow = 'auto';
+    if (validate()) {
+        let title = titleInput.value;
+        let author = authorInput.value;
+        let numOfPages = numOfPagesInput.value;
+        let status = statusInput.checked;
+        let img = URL.createObjectURL(imgInput.files[0]);
 
-    addBookToLibrary(title, author, numOfPages, status, img);
+        formContainer.style.display = 'none';
+        body.style.overflow = 'auto';
+        addBookToLibrary(title, author, numOfPages, status, img);
+    };
 });
+

@@ -27,23 +27,28 @@
             <ul>
                 <li>
                     <label for="title">Title:</label>
-                    <input type="text" id="title" name="title">
+                    <input type="text" id="title" name="title" required>
+                    <span class="msg"></span>
                 </li>
                 <li>
                     <label for="author">Author:</label>
-                    <input type="text" id="author" name="author">
+                    <input type="text" id="author" name="author" required>
+                    <span class="msg"></span>
                 </li>
                 <li>
                     <label for="num-of-pages"># of Pages:</label>
-                    <input type="number" id="num-of-pages" name="num-of-pages">
+                    <input type="number" id="num-of-pages" name="num-of-pages" required>
+                    <span class="msg"></span>
                 </li>
                 <li class="inline">
                     <label for="read">Completed:</label>
                     <input type="checkbox" id="read" name="read">
+                    <span class="msg"></span>
                 </li>
                 <li>
                     <label for="img">Cover Image:</label>
-                    <input type="file" id="img" name="img" accept="image/*">
+                    <input type="file" id="img" name="img" accept="image/*" required>
+                    <span class="msg"></span>
                 </li>
             </ul>
             <button>Add Book To Library</button>
